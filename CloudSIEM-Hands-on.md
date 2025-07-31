@@ -17,7 +17,7 @@
 
 同時に、DevOpsエンジニアがサービスのセキュリティを確保する責任を負うにつれて、彼らは脅威を特定するためのモニタリングプラットフォームを必要としています。
 
-![01](https://github.com/DataDog/Datadog-Labs-jp/tree/main/security-lab/images/08.png)
+![01](https://github.com/DataDog/Datadog-Labs-jp/tree/main/security-lab/images/CloudSIEM/08.png)
 
 Datadogのクラウドセキュリティプラットフォームは、リアルタイムの脅威検出と、クラウドインフラ（アプリケーション、ホスト、コンテナを含む）全体での継続的な設定監査機能を提供します。これをDatadogのオブザーバビリティ・プラットフォームと統合することで、組織はセキュリティおよび運用目標を両立することができます。
 
