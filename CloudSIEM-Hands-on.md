@@ -177,7 +177,7 @@ service:nginx AND -@http.status_code:200
 
 ```
 
-[SIEM Testing] Non-Normal Status Codes
+[SIEM Testing] Non-Normal Status Codes test
 ```
 
 ![https://play.instruqt.com/assets/tracks/tgxgnuujoz03/16695dc1f924c6591636a425bbd9c6f5/assets/01-03.png](https://play.instruqt.com/assets/tracks/tgxgnuujoz03/16695dc1f924c6591636a425bbd9c6f5/assets/01-03.png)
