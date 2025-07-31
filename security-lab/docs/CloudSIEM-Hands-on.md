@@ -173,14 +173,14 @@ service:nginx AND -@http.status_code:200
 
 ログはCloud SIEMにおけるアラートの基盤です。検索クエリを失わないように、保存された検索クエリを作成することができます。
 
-**ログ**検索フィールドの上にある **+ Save** ボタンをクリックし、以下のように保存された検索に名前を付けてください：
+**「My View」** の横にある3つのドットをクリックし、**「Save new view as」** をクリックして、次のようにビューに名前を付けます。：
 
 ```
 
 [SIEM Testing] Non-Normal Status Codes
 ```
 
-![https://play.instruqt.com/assets/tracks/tgxgnuujoz03/16695dc1f924c6591636a425bbd9c6f5/assets/01-03.png](https://play.instruqt.com/assets/tracks/tgxgnuujoz03/16695dc1f924c6591636a425bbd9c6f5/assets/01-03.png)
+![https://play.instruqt.com/assets/tracks/tgxgnuujoz03/b2df7fcb1dd4d30ebd951738ed812dec/assets/save-view.png](https://play.instruqt.com/assets/tracks/tgxgnuujoz03/b2df7fcb1dd4d30ebd951738ed812dec/assets/save-view.png)
 
 
 ### Cloud SIEMに慣れる
