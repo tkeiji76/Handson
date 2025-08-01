@@ -191,39 +191,31 @@ service:nginx AND -@http.status_code:200
 
 **Cloud SIEMを有効にする** を促す画面が表示される場合がありますが、そのまま進めてください。
 
-**Skip**ボタンを選択すると、コンテンツ パックの有効化をバイパスし、ログソースの有効化に進むことができます。 このラボでは、**NGINX**ログソースを有効にしてください。また必要に応じて他のログ ソースを有効にすることもできます。
+**Skip**ボタンを選択して、コンテンツ パックの有効化をバイパスし、ログソースの有効化に進んでください。 このラボでは、**NGINX**ログソースを有効にしてください。また必要に応じて他のログ ソースを有効にすることもできます。
+注）ラボ環境の制限により、Cloud SIEM によってNGINXが自動検出されない可能性があります。NGINX がリストにない場合は、スキップしてCloud SIEM の有効化に進んでください。
 
-Cloud SIEMを有効にした後、結果として表示される画面は、あなたの設定を示します（これは[Security > Configuration](https://app.datadoghq.com/security/configuration/siem/setup)を通じてもアクセスできます）。
+Cloud SIEM を有効にすると、画面に設定が表示されます。このページで「Index Configuration」セクションを見つけます。
 
-
-![https://play.instruqt.com/assets/tracks/tgxgnuujoz03/a80b41ffe5fcd66c73cfae101e1d4a8c/assets/01-04_b.png](https://play.instruqt.com/assets/tracks/tgxgnuujoz03/a80b41ffe5fcd66c73cfae101e1d4a8c/assets/01-04_b.png)
+![https://play.instruqt.com/assets/tracks/tgxgnuujoz03/6be483d95ccc03812aa6097b5313eaa3/assets/01-04_b.png](https://play.instruqt.com/assets/tracks/tgxgnuujoz03/6be483d95ccc03812aa6097b5313eaa3/assets/01-04_b.png)
 
 このページでは、**Index Configuration** セクションに、修正が必要であるという警告が表示されることに気付くでしょう。NGINXログのようなSIEM対象のログを有効にしたとき、Cloud SIEM用にDatadog内に新しいログインデックスが作成され、それがメインインデックスよりも上に並べ替えられる必要があります。このセクションの指示に従ってインデックスの順序を修正してください。
 
-画面上の**Reorder Index in Logs Configuration**ボタンをクリックし、Index並べ替えのページに遷移、Cloud SIEM専用のcloud-siem-xxxx名のIndexが自動に作成されたことを確認し、上矢印ボタンをクリックし、一番上に移動させます。
-![10](../images/CloudSIEM/21-1.png)
+**「Index Configuration」** をクリックすると、手順と **「Reorder Index in Logs Configuration」** ボタンが表示されます。このセクションの手順に従って、インデックスの順序を修正してください。前の手順でNginxログソースを追加できなかった場合は、今すぐCloud SIEMのログインデックスを変更してください。Log Indexページで、「cloud-siem」で始まるインデックスにマウスを合わせ、鉛筆アイコンをクリックして編集します。
 
-Moveボタンをクリックします。
-![10](../images/CloudSIEM/21-2.png)
-
-Reorderボタンをクリックしオーダー変更を有効化。
-![10](../images/CloudSIEM/21-3.png)
-
-[Logs > Index](https://app.datadoghq.com/logs/pipelines/indexes)の画面で、cloud-siem-xxxxのIndexの行の右にある鉛筆アイコンをクリックし、フィルターを編集します。
-Filterの内容を以下に入れ替え、Saveボタンをクリックします。これによって、SIEMルールが適応する全対象のログがフィルタリングされました。
+**「Define Index Filter」** で、-* を次のフィルターに置き換え、Save をクリックします。
 ```
-service:(nginx OR store-frontend OR discounts-service)
+source:nginx
 ```
-![10](../images/CloudSIEM/21-4.png)
 
-Index構成が以下通りになることを確認します。
-![10](../images/CloudSIEM/21-5.png)
+![10](https://play.instruqt.com/assets/tracks/tgxgnuujoz03/aac0699b8b41a6d90c4945910ebfc7ba/assets/define-index-filter.png)
 
+Cloud Siem ログ インデックスが次のスクリーンショットのようになっていることを確認します。
+![10](https://play.instruqt.com/assets/tracks/tgxgnuujoz03/cfeb2f612dca8c75b91c701c5f091a86/assets/log-index-with-source.png)
+
+Cloud SIEM のセットアップページに戻ります。セットアップページでは設定のステータスを確認できます。
+Cloud SIEM が正しく構成されている場合、次のスクリーンショットに示すように、「Index properly configured」というメッセージが表示されます。Cloud SIEM のインデックスが正しく構成されていることを確認してください。
 
 完了したら、[Security > Cloud SIEM](https://app.datadoghq.com/security/home)に移動してください。
-
-
-![https://play.instruqt.com/assets/tracks/tgxgnuujoz03/555590fd8483edaca4bb2abe685dfbd7/assets/01-04_c.png](https://play.instruqt.com/assets/tracks/tgxgnuujoz03/555590fd8483edaca4bb2abe685dfbd7/assets/01-04_c.png)
 
 異なるタブ—**Overview**、**Content Packs**、**Signals**、**Detection Rules**、および**Investigator**— を探索して、利用可能なさまざまな機能を確認してください。
 
@@ -259,14 +251,14 @@ service:nginx AND -@http.status_code:200
 
 ルールケースを設定してください。これは、アラートが特定の時間枠内で特定の値を超えた場合にアラートをトリガーする数式です。この機能を「スライディングウィンドウ」とも呼びます。時間が経過するにつれて前進するからです。
 
-**Set rule cases**の下で、**Trigger**に`non_200_status_codes > 5`を入力してください。**Name**には`minimal reconnaissance`を入力してください。Severityは`INFO`に設定し、通知フィールドは空のままにしてください。
+**Set Conditions**の下で、**Trigger**に`non_200_status_codes > 5`を入力してください。鉛筆アイコンを使用して **Condition**に`minimal reconnaissance`と入力してください。Severityは`INFO`に設定し、通知フィールドは空のままにしてください。
 
 > 注意：もしより高い数値に対してより高いSeverityを望む場合は、一つのルール内で複数のアラートを作成することができます。
 >
 
-![14](../images/CloudSIEM/14.png)
+![14](https://play.instruqt.com/assets/tracks/tgxgnuujoz03/55fb410eba704940436c148614e8bf3e/assets/01-07_b.png)
 
-**Say what's happening**で、ルール名として以下を入力してください：
+**Describe your Playbook**で、ルール名として以下を入力してください：
 
 ```
 Possible Directory Enumeration
@@ -296,7 +288,7 @@ tactic:TA0043-reconnaissance
 
 **Save Rule**をクリックしてください。
 
-![15](../images/CloudSIEM/15.png)
+![15](https://play.instruqt.com/assets/tracks/tgxgnuujoz03/7cc0068875596a5a8e534b5ae6c5970a/assets/01-07_c.png)
 
 ### 作成したルールとセキュリティシグナルを確認する
 
