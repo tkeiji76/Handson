@@ -778,14 +778,17 @@ rule %{data::keyvalue("="," ;/")}
 
 このクエリでは、**Query b**の横にある鉛筆アイコンをクリックしてクエリ名を編集します。クエリ名に`root_user`と入力します。クエリフィールドには、`USER=root`と入力します。
 
-ルールケースを設定します。**Trigger**には、`sudo_usage > 1 && root_user > 1`を入力し、名前を`ssh攻撃`にします。重要度を`HIGH`に更新します。通知は空のままにしておきます。
+![https://play.instruqt.com/assets/tracks/yksmjqexsapu/4bc1b67259a9286714010757b27a0290/assets/03-sudo-rule-queries.png](https://play.instruqt.com/assets/tracks/yksmjqexsapu/4bc1b67259a9286714010757b27a0290/assets/03-sudo-rule-queries.png)
+
+**Set condition**には、`sudo_usage > 1 && root_user > 1`を入力し、名前を`ssh attack`にします。重要度を`HIGH`に更新します。通知は空のままにしておきます。
+
+![https://play.instruqt.com/assets/tracks/yksmjqexsapu/ae3b619e5d154648884f44a4e9b67664/assets/03-sudo-rule-conditions.png](https://play.instruqt.com/assets/tracks/yksmjqexsapu/ae3b619e5d154648884f44a4e9b67664/assets/03-sudo-rule-conditions.png)
 
 このケースでは、sudoコマンドがUID=0またはrootにエスカレートするときにのみアラートがトリガーされるようになっています。これにより、特権アクティビティの騒音が時間とともに大幅に減少するはずです。
 
-**Say what's happening**には、次の内容を入力します：
+**Describe your Playbook**には、次の内容を入力します：
 
 ```
-
 Linux Privileged Activity Usage
 ```
 
@@ -805,12 +808,15 @@ For more information check the corp wiki.
 **注意:** このルールは、追加のコンテキストを提供します。シミュレーションで攻撃者が使用しているコマンドの1つは実際に`dd`です。`dd`コマンドは、しばしばディスクの未割り当ての領域を埋めるために使用されます。これにより、フォレンジックエンジニアが関連するデータを復旧して調査することができなくなります。
 
 最後に、`security:attack`のタグを選択し、**Save Rule**をクリックします。
+```
+security:attack
+```
+
 
 検出ルールリストにリダイレクトされます。リスト内で`linux`を検索します。リストには、さきほど作成したルールの1つが表示されています。
 
-ルールをクリックします。その後、右上の**View Signals**をクリックします。カスタムルールでフィルターされた**Security Signals**リストにリダイレクトされます。
+ルールをクリックします。画面を下にスクロールしてSingalが表示されているのを確認します。新しいログが検出ルールをトリガーするまで 2 ～ 3 分待つ必要がある場合があります。
 
-リスト内のシグナルをクリックして詳細を表示します。検出ルールがトリガーされ、リストにシグナルが表示されるまでに2〜3分かかる場合があります。
 
 ### パスワードスプレー攻撃のログを検索する
 
