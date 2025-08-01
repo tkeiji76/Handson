@@ -484,9 +484,6 @@ publickey AND iH9P29ZnoCAvS0QSxFk1I5IvtHaNtyFua5VgbdGwvB4
 
 ![https://play.instruqt.com/assets/tracks/8ey2ynbxb188/0a124ff80cb21003465d99749df99200/assets/02-unprocessed-log.png](https://play.instruqt.com/assets/tracks/8ey2ynbxb188/0a124ff80cb21003465d99749df99200/assets/02-unprocessed-log.png)
 
-補足に、Cloud SIEMを有効化できたら、全てのIndexに対して、以下例のように自動的にIPを以下のように抽出できます。
-![11](../images/CloudSIEM/11.png)
-
 今回でラボでは、ログに対してIP抽出処理を例でご体験し、ルールが攻撃をよりよく検出できるようにします。
 
 ### ログ構成を調整するためのログパイプラインを作成
@@ -547,23 +544,33 @@ SSHキーが新しいIPアドレスで使用されたときにアラートを受
 
 **Create New Rule**をクリックします。
 
-**Name**に`Security Notification`を入力します。
+**Name**に以下を入力します。
+```
+High and Critical Severity Discounts Service Threats
+```
 
-**For every new**で、`Signal`タイプを選択し、`Log Detection`を追加します。
+**For every new**で、`Signal`タイプを選択します。
 
-**Which has**で、**Any of these severity**に`High`と`Critical`を入力します(必要に応じて、**And tags or attribute**に適切な内容を入力).
+**Which has**で、**Any of these severity**に`High`と`Critical`を入力します
 
-**Then**の下にある**Notify the following recipients**下のボタンをクリックし、アカウントメールアドレスをクリックします。
+**And of these tags or attribute**に`env:development`と`service:discounts-service`を入力します
+```
+env:development service:discounts-service
+```
+![22](https://play.instruqt.com/assets/tracks/8ey2ynbxb188/b6e24cd581ac774a256a2d5c715fb671/assets/02-notificationrule-a.png)
 
-**Save and Activate**をクリックします。
 
-![22](../images/CloudSIEM/22.png)
+**Then notify the following recipients**の下にあるボタンをクリックし、アカウントメールアドレスをクリックします。
+
+![22](https://play.instruqt.com/assets/tracks/8ey2ynbxb188/9adbdb5a775c28a27c52e8c7d1ae7f46/assets/02-notificationrule-b.png)
+
+**Save**をクリックします。
 
 ### SSHDアクティビティの検出ルールの作成
 
 次に、新しいIPアドレスでSSHキーが使用されたときにアラートを受信するための**New value**の検出ルールを作成します。このルールは、攻撃者のIPアドレスごとに1回だけトリガーされます。**New value**の検出ルールは、環境内のノイズを減らす優れた方法です。
 
-[Security > Cloud SIEM](https://app.datadoghq.com/security)に移動します。
+[Security > Cloud SIEM](https://app.datadoghq.com/security/rules?deprecated=hide)に移動します。
 
 **Detection Rules**タブをクリックします。
 
@@ -583,18 +590,30 @@ publickey AND iH9P29ZnoCAvS0QSxFk1I5IvtHaNtyFua5VgbdGwvB4
 
 ![https://play.instruqt.com/assets/tracks/8ey2ynbxb188/48e8c61d77f13450fae007e4abd47b10/assets/02-05.png](https://play.instruqt.com/assets/tracks/8ey2ynbxb188/48e8c61d77f13450fae007e4abd47b10/assets/02-05.png)
 
-「7日後」の値を「すべての**New value**に対して」に変更します。これにより、**New value**が見つかるたびにルールがトリガーされるようになります。
+「after 7 days」の値を「for all new values」に変更します。これにより、**New value**が見つかるたびにルールがトリガーされるようになります。
 
-タイピング中に**Preview matching logs**を拡大すると便利です。これにより、ログクエリがどの程度意図したログを捉えているかがリアルタイムで表示されます。
+**Preview matching logs**がまだ展開されていない場合は展開してください。プレビューには、`publickey AND iH9P29ZnoCAvS0QSxFk1I5IvtHaNtyFua5VgbdGwvB4`クエリに一致するログが表示されない可能性が高いです。これは、sshdログが現在Cloud Siemログインデックスによって分析されていないためです。
 
-![https://play.instruqt.com/assets/tracks/8ey2ynbxb188/f1bf041bcd0fc91a0f1afc3c3671cc6d/assets/02-04.png](https://play.instruqt.com/assets/tracks/8ey2ynbxb188/f1bf041bcd0fc91a0f1afc3c3671cc6d/assets/02-04.png)
+これを修正するには、新しいタブまたはウィンドウで[Log Index](https://app.datadoghq.com/logs/pipelines/indexes)設定を開きます。
 
-**Set rule cases**の下で、**Severity**を`High`に設定します。
+Cloud Siem インデックスにマウスを移動し、鉛筆アイコンをクリックして Cloud SIEM ログ インデックスを編集します。
+「Define Index Filter」で、インデックスフィルターを更新し、「service:discounts-service」を追加します。完全なインデックスフィルターは以下のようになります。
+```
+source:nginx OR service:discounts-service
+```
+![https://play.instruqt.com/assets/tracks/8ey2ynbxb188/76ced5206c5accda546db0144d2a593d/assets/02-updated-index.png](https://play.instruqt.com/assets/tracks/8ey2ynbxb188/76ced5206c5accda546db0144d2a593d/assets/02-updated-index.png)
+
+ログ インデックスの更新を必ず保存し、ログ インデックス タブを閉じて、検出ルールの構成ページに戻ります。
+「Preview matching logs」セクションで、discounts-service からの一致するログが表示されるようになります。これには数分かかる場合があります。
+
+![https://play.instruqt.com/assets/tracks/8ey2ynbxb188/4f3ee680ebe6f4ed232a2f76cbb73ad4/assets/02-matching-logs.png](https://play.instruqt.com/assets/tracks/8ey2ynbxb188/4f3ee680ebe6f4ed232a2f76cbb73ad4/assets/02-matching-logs.png)
+
+プレビューに一致するログが表示されるまで待ってから、新しいルールの作成を続行します。
+**Define Conditions**の下で、**Severity**を`High`に設定します。
 
 残りの値はそのままにしておきます。**New value**のルールタイプは、覚えられる情報に柔軟性があります。これを使用して、多くの場合に怪しい活動、横方向の移動の検出などができます。
 
-**Say what's happening**の下に、次のようにルール名を入力します:
-
+**Describe Your Playbookg**の下に、次のようにルール名を入力します:
 
 ```
 
@@ -616,25 +635,31 @@ The ssh key in question has been used to successfully authenticate by a new thre
 ```
 security:attack
 ```
+```
+env:development
+```
+```
+service:discounts-service
+```
+![https://play.instruqt.com/assets/tracks/8ey2ynbxb188/49a615505d6205c54b2c3327fcf8fe10/assets/02-detectionrule.png](https://play.instruqt.com/assets/tracks/8ey2ynbxb188/49a615505d6205c54b2c3327fcf8fe10/assets/02-detectionrule.png)
 
-### Save Rule をクリックします。
 
-![18](../images/CloudSIEM/18.png)
+**Save Rule** をクリックします。
 
 
 ### 結果の観察
 
-[Security > Security Signals](https://app.datadoghq.com/security) に移動します。
+[Security > Cloud SIEM > Signals](https://app.datadoghq.com/security) に移動します。
 
 作成した **Leaked SSH Key in Use for New Threat** ルールに対するセキュリティシグナルが表示されています。新しいログが収集されて処理されるまでに2〜5分かかる場合があるため、シグナルがトリガーされるのを待つ必要があります。
 
 シグナルをクリックして詳細を表示します。 **Rule details** タブをクリックします。攻撃者システムのクライアントIPの詳細、`172.18.0.8`、が自動的にPlaybookメッセージに入力されていることに注意してください。
 
-[Security > Configuration](https://app.datadoghq.com/security/configuration) に移動し、 **Notifications** タブを選択します。
+[Security > Cloud SIEM > Settigns > Notifications](https://app.datadoghq.com/security/configuration) に移動します。
 
-以前に作成した通知ルールを選択します。作成した検出ルールが **Example of matching issues** リストに表示されていることがわかります。
+先ほど作成した通知ルールを選択します。作成した検出ルールが **Preview of matching results** リストに表示されます。
 
-[Service Mgmt > Event Management](https://app.datadoghq.com/event/explorer) に移動します。作成した通知ルールがトリガーされたため、イベント **[custom.network.client.ip:172.18.0.8] Leaked SSH Key in Use for New Threat** がリストに表示されています。
+![https://play.instruqt.com/assets/tracks/8ey2ynbxb188/f959328e5c5cff1cf4dd9f6624ee87b5/assets/02-notificationrule_detectionrule.png](https://play.instruqt.com/assets/tracks/8ey2ynbxb188/f959328e5c5cff1cf4dd9f6624ee87b5/assets/02-notificationrule_detectionrule.png)
 
 ### 結論
 
