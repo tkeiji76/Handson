@@ -870,7 +870,7 @@ service:store-frontend @http.url_details.path:"/login"
 
 ![https://play.instruqt.com/assets/tracks/yksmjqexsapu/8e3e76090448a43d4bcac7b580f63666/assets/03-userid_attribute.png](https://play.instruqt.com/assets/tracks/yksmjqexsapu/8e3e76090448a43d4bcac7b580f63666/assets/03-userid_attribute.png)
 
-属性の横にある歯車アイコンをクリックし、**Create facet for @usr.id**を選択します。表示される**Add facet**ウィンドウで**Add**をクリックします。
+属性の横にある三つの点のアイコンをクリックし、**Create facet for @usr.id**を選択します。表示される**Add facet**ウィンドウで**Add**をクリックします。
 
 ![https://play.instruqt.com/assets/tracks/yksmjqexsapu/197cc6c3e27fcfbd47e09ec8bb2466fc/assets/03-11.png](https://play.instruqt.com/assets/tracks/yksmjqexsapu/197cc6c3e27fcfbd47e09ec8bb2466fc/assets/03-11.png)
 
@@ -879,6 +879,20 @@ service:store-frontend @http.url_details.path:"/login"
 リストにファセットが表示されない場合は、ファセットのリストの上にある**Showing ## of ##**（`##`は数値です。）をクリックします。リストをスクロールします。**Others**グループの**@usr.id**が選択されていない場合は、選択してから**Apply**をクリックして、ファセットがログイベントの左側のリストに表示されます。必要に応じてLog Searchページを更新します。
 
 ![https://play.instruqt.com/assets/tracks/yksmjqexsapu/52f34e9b314473b1eed273d0e7eae344/assets/03-userid_facet.png](https://play.instruqt.com/assets/tracks/yksmjqexsapu/52f34e9b314473b1eed273d0e7eae344/assets/03-userid_facet.png)
+
+### パスワードスプレー検知ルールの作成
+
+次の検出ルールを作成する前に、store-frontendサービスを Cloud SIEM ログインデックスに追加する必要があります。
+[Log Index](https://app.datadoghq.com/logs/pipelines/indexes)に移動し設定を開き、鉛筆アイコンをクリックして Cloud SIEM ログインデックスを編集します。
+ワイルドカードフィルターを使用して、すべてのサービスのログを含むように Cloud SIEM インデックスを更新します。
+```
+source:nginx OR service:*
+```
+
+![https://play.instruqt.com/assets/tracks/yksmjqexsapu/0a9a2e6672e407621d309f91cd1b2bdb/assets/03-update-index.png](https://play.instruqt.com/assets/tracks/yksmjqexsapu/0a9a2e6672e407621d309f91cd1b2bdb/assets/03-update-index.png)
+
+「Save」をクリックします。これで、Cloud SIEM が、パスワードスプレー攻撃の証拠が確認されたストアフロントエンドを含むすべてのサービスのログを分析します。
+
 
 ### パスワードスプレー検知ルールの作成
 
@@ -918,10 +932,9 @@ service:store-frontend @http.method:POST @http.url_details.path:"/login" @Status
 
 ルールの条件を設定します。**Trigger**には、`failed_logins > 10 && successful_login > 1`を入力し、名前を`successful password spray attack`にします。Severityを`HIGH`に更新します。通知は空のままにします。
 
-**何が起こっているか**の欄には、次の内容をルール名として入力します：
+**Describe your Playbook**の欄には、次の内容をルール名として入力します：
 
 ```
-
 Successful password spray
 ```
 
@@ -934,19 +947,17 @@ A password spray attack was successful for the user: {{@usr.id}}
 
 最後に、タグ`security:attack`を選択し、**Save Rule**をクリックします。
 
-![19](../images/CloudSIEM/19.png)
-
 検出ルールのリストにリダイレクトされます。リストで`password spray`を検索します。作成したルールがリストされていることがわかります。
 
 ルールの右側にある3つの点をクリックし、**Clone rule**を選択してルールのコピーを作成します。
 
 クエリにスクロールダウンし、**successful_login**クエリを削除します。
 
-**ルールの条件を設定**までスクロールダウンします。**Trigger**を`failed_logins > 5`に更新し、名前を`password spray attack in progress`に更新します。深刻度を`LOW`に更新し、通知を空白のままにします。
+**Define Condition**までスクロールダウンします。**Trigger**を`failed_logins > 5`に更新し、名前を`password spray attack in progress`に更新します。深刻度を`LOW`に更新し、通知を空白のままにします。
 
-![23](../images/CloudSIEM/23.png)
+![23](https://play.instruqt.com/assets/tracks/yksmjqexsapu/cc80288a6a82046d5770a03e78b11b38/assets/03-password-spray-in-progress.png)
 
-**Say what's happening**にルール名として以下を記述:
+**Describe your Playboo**にルール名として以下を記述:
 
 ```
 
@@ -966,7 +977,7 @@ A password spray attack in progress for user: {{@usr.id}}
 
 これで、2つのルールができました。1つは、予測可能なパスワードが正しく推測された場合に、より高いSeverityでトリガーされるルールです。もう1つは、特定のユーザーに対するパスワードスプレーが進行中であり、成功していないことを通知するSeverityの低いアラートです。
 
-[Security > Security Signals](https://app.datadoghq.com/security) に移動します。
+[Security > Cloud SIME > Signals](https://app.datadoghq.com/security) に移動します。
 
 Storedogアプリへのシミュレートされた攻撃を考慮すると、**Password Spray in Progress** アラートのみがトリガーされているはずです。検出ルールがトリガーされ、リストにシグナルが表示されるのを待つ必要があります。
 
