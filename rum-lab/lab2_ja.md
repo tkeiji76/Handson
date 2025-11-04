@@ -1,11 +1,4 @@
----
-slug: aggregating-user-session-data 
-type: challenge
-title: Aggregating User Session Data 
-teaser: '' 
-notes:
-- type: text
-  contents: |
+
       # Session Dataの集約によるトレンドの発見
 
       RUM user sessionは、単一のユーザーのエクスペリエンスに関する情報のみを提供します。大局的なトレンドや関係性を特定するには、多くのセッションを集約する必要があります。
@@ -15,20 +8,6 @@ notes:
       環境の準備ができたら、下の**Start**をクリックしてください。
 
       > **注意**: このラボは、10分間非アクティブの状態が続くとタイムアウトします。
-tabs: 
-- title: Terminal
-  type: terminal
-  hostname: lab-host
-- title: Storedog
-  type: service
-  hostname: lab-host
-  path: /
-  port: 80
-  new_window: true
-- title: Help
-  type: website
-  url: https://datadoghq.dev/training-lab-support?sandboxId=${_SANDBOX_ID}
-difficulty: basic
 ---
 
 
