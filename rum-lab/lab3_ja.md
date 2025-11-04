@@ -1,11 +1,3 @@
----
-slug: investigating-frontend-issues 
-type: challenge
-title: Investigating Frontend Issues
-teaser: '' 
-notes:
-- type: text
-  contents: |
     # RUMによる問題の調査
 
     RUMを探索している間に、Storedogのフロントエンドで問題が発生したという通知を受け取ります。サポートは、チェックアウト中のエラーとパフォーマンスの低下に関する苦情が増えていることを受けています。
