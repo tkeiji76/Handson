@@ -1,39 +1,4 @@
----
-slug: restoring-performance-and-ux
-type: challenge
-title: Restoring Performance & User Experience 
-teaser: '' 
-notes:
-- type: text
-  contents: |
-    # パフォーマンスとユーザーエクスペリエンスの復元
 
-    エラーの発生源と根本原因を特定した後、あなたとチームは修正をデプロイします。
-
-    この最終セクションでは、StoredogのパフォーマンスとUXが復元されるにつれて、エラー率とロード時間が減少するのを確認します。
-
-    環境の準備ができたら、下の**Start**ボタンをクリックしてください。
-
-    > **注意**: このラボは、10分間非アクティブの状態が続くとタイムアウトします。
-tabs: 
-- title: Terminal
-  type: terminal
-  hostname: lab-host
-- title: IDE
-  type: service
-  hostname: lab-host
-  path: /
-  port: 8080
-- title: Storedog
-  type: service
-  hostname: lab-host
-  path: /
-  port: 80
-  new_window: true
-- title: Help
-  type: website
-  url: https://datadoghq.dev/training-lab-support?sandboxId=${_SANDBOX_ID}
-difficulty: basic
 ---
 
 エラーが始まってから数時間が経ちました。チームメートと協議して修正を作成し、これがどのように起こったかを判断しました。ストーリーは次のとおりです：
