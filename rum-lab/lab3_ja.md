@@ -1,31 +1,4 @@
-    # RUMによる問題の調査
 
-    RUMを探索している間に、Storedogのフロントエンドで問題が発生したという通知を受け取ります。サポートは、チェックアウト中のエラーとパフォーマンスの低下に関する苦情が増えていることを受けています。
-
-    RUMを使用して、この問題をトラブルシューティングして特定します。
-
-    環境の準備ができたら、**Start**をクリックしてください。
-
-    > **注意**: このラボは、10分間非アクティブの状態が続くとタイムアウトします。
-tabs: 
-- title: Terminal
-  type: terminal
-  hostname: lab-host
-- title: IDE
-  type: service
-  hostname: lab-host
-  path: /
-  port: 8080
-- title: Storedog
-  type: service
-  hostname: lab-host
-  path: /
-  port: 80
-  new_window: true
-- title: Help
-  type: website
-  url: https://datadoghq.dev/training-lab-support?sandboxId=${_SANDBOX_ID}
-difficulty: basic
 ---
 
 さらにRUM機能を探索しようとしているときに、一連の通知を受け取ります。
