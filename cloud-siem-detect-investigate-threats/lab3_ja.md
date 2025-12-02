@@ -204,7 +204,7 @@
 
 最初のアクセスポイントに関連するセキュリティシグナルを修復してアーカイブしたので、同じ攻撃に関連する他のシグナルを調査します。これを行うには多くの方法がありますが、1つのオプションは`attacker-session`に関連するすべてのシグナルを調査することです。
 
-1. **[Cloud SIEM Signals Explorer](https://app.datadoghq.com/security?query=@workflow.rule.type:(%22Log%20Detection%22%20OR%20%22Signal%20Correlation%22)&product=siem)**に戻ります。
+1. **[Cloud SIEM Signals Explorer](https://app.datadoghq.com/security?query=@workflow.rule.type:(%22Log%20Detection%22%20OR%20%22Signal%20Correlation%22)&product=siem)** に戻ります。
 
 2. 次のクエリを使用して、`attacker-session`に関連するすべてのシグナルを見つけます。
 
