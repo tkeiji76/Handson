@@ -36,7 +36,7 @@ CTFをプレイするには、ラボナビゲーションの **[Capture the Flag
 
 <details>
 <summary><strong>Flag 5 Solution</strong></summary>
-<p><span><br><strong>[Flag-CloudSIEM]</strong><br><br>Signals Explorerで高重要度の**New AWS account seen assuming a role into AWS account**シグナルを見つけます。<img src="../assets/04-capture-the-flag/question_5_find_high_severity_signal.png" alt="Find the high severity signal in Signals Explorer."> Playbookを読んでフラグを見つけます。<img src="../assets/04-capture-the-flag/question_5_flag_in_the_change_log.png" alt="Read the Rule Details to find the flag under the Changelog heading."> </span></p>
+<p><span><br><strong>[Flag-CloudSIEM]</strong><br><br>Signals Explorerで高重要度の **New AWS account seen assuming a role into AWS account** シグナルを見つけます。<img src="../assets/04-capture-the-flag/question_5_find_high_severity_signal.png" alt="Find the high severity signal in Signals Explorer."> Playbookを読んでフラグを見つけます。<img src="../assets/04-capture-the-flag/question_5_flag_in_the_change_log.png" alt="Read the Rule Details to find the flag under the Changelog heading."> </span></p>
 </details>
 
 
