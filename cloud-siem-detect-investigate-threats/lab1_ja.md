@@ -42,7 +42,7 @@ Out-of-the-box検知ルール
     creds
     ```
 
-2. Datadogのメインメニューで、**Security**にカーソルを合わせます。**Cloud SIEM**の下にある**[Detection Rules](https://app.datadoghq.com/security/rules?query=type%3A%28log_detection%20OR%20signal_correlation%29&deprecated=hide)**をクリックします。
+2. Datadogのメインメニューで、**Security**にカーソルを合わせます。**Cloud SIEM**の下にある **[Detection Rules](https://app.datadoghq.com/security/rules?query=type%3A%28log_detection%20OR%20signal_correlation%29&deprecated=hide)** をクリックします。
 
 3. いくつかのコアファセットを使用してルールをグループ化およびソートできます。**Group by**セレクタを使用して、ルールを`tactic`でグループ化します。
 
