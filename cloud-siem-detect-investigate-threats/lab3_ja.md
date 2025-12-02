@@ -1,34 +1,3 @@
----
-slug: find-the-access-point
-type: challenge
-title: Find the Attacker Access Point
-teaser: '' 
-notes:
-- type: text
-  contents: |
-    このアクティビティでは、Cloud SIEM Investigatorを使用して攻撃者のアクセスポイントを特定し、修復を開始します。
-
-    > **注意**: このラボは10分間操作がないとタイムアウトします。
-tabs: 
-- title: Terminal
-  type: terminal
-  hostname: lab-host
-- title: IDE
-  type: service
-  hostname: lab-host
-  path: /
-  port: 8080
-- title: AWS Console
-  type: service
-  hostname: cloud-client
-  path: /
-  port: 80
-- title: Help
-  type: website
-  url: https://datadoghq.dev/training-lab-support?sandboxId=${_SANDBOX_ID}
-difficulty: basic
----
-
 攻撃者のアクセスポイントを調査する
 === 
 このアクティビティでは、**[Cloud SIEM Investigator](https://app.datadoghq.com/security/investigator/aws?id=vulnerable-role&name=vulnerable-role&type=role)**を使用して、これらの`vulnerable-role`アクションを取り巻く状況についてより詳しい情報を見つけることができるか確認します。
