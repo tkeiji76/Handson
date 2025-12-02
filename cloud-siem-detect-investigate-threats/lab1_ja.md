@@ -27,7 +27,7 @@ Cloud SIEMが導入されたことに興奮しており、アプリが本番稼�
     > [!NOTE]
     > サインインURLを使用する際にエラーメッセージが表示される場合は、AWSアカウントに既にログインしていないことを確認してから、もう一度URLを試してください。
 
-2. ラボターミナルの上にある**[AWS Console tab](tab-2)** をクリックして、AWSアカウントの認証情報を表示します。AWSコンソールまたは[AWS CLI](https://aws.amazon.com/cli/)を使用してクラウドアカウントにアクセスできます。
+2. ラボターミナルの上にある **[AWS Console tab](tab-2)** をクリックして、AWSアカウントの認証情報を表示します。AWSコンソールまたは[AWS CLI](https://aws.amazon.com/cli/)を使用してクラウドアカウントにアクセスできます。
 
 > [!NOTE]
 > クラウドアカウントは一時的なもので、このラボ中のみ存続します。
@@ -36,7 +36,7 @@ Out-of-the-box検知ルール
 ===
 最初の攻撃手法を実行する前に、Cloud SIEMが攻撃手法や疑わしい活動をフラグ付けするために使用するout-of-the-box（OOTB）検知ルールを探索します。
 
-1. **[lab terminal](tab-0)**に表示されているDatadog認証情報を使用して、このラボ用の[Datadog](https://app.datadoghq.com)アカウントにログインします。必要に応じて、`creds`コマンドを実行して認証情報を再度表示します。
+1. **[lab terminal](tab-0)** に表示されているDatadog認証情報を使用して、このラボ用の[Datadog](https://app.datadoghq.com)アカウントにログインします。必要に応じて、`creds`コマンドを実行して認証情報を再度表示します。
 
     ```run,bash
     creds
