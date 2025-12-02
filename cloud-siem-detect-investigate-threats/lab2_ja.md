@@ -1,45 +1,10 @@
----
-slug: start-your-investigation
-type: challenge
-title: Start Your Investigation
-teaser: '' 
-notes:
-- type: text
-  contents: |
-    このアクティビティでは、攻撃を検知して調査します。
-
-    セキュリティシグナル、Signals Explorer、Cloud SIEM Investigatorを使用して、攻撃パスと影響を受けたリソースを特定します。
-
-    > **注意**: このラボは10分間操作がないとタイムアウトします。
-tabs: 
-- title: Terminal
-  type: terminal
-  hostname: lab-host
-- title: IDE
-  type: service
-  hostname: lab-host
-  path: /
-  port: 8080
-- title: AWS Console
-  type: service
-  hostname: cloud-client
-  path: /
-  port: 80
-- title: Help
-  type: website
-  url: https://datadoghq.dev/training-lab-support?sandboxId=${_SANDBOX_ID}
-difficulty: basic
----
-
-このアクティビティでは、攻撃中にCloud SIEMが生成したセキュリティシグナルを探索して調査します。
-
 セキュリティシグナル
 ===
 
 > [!IMPORTANT]
 > AWS CloudTrailは[約5分ごと](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/how-cloudtrail-works.html#:~:text=CloudTrail%20publishes%20log%20files%20multiple%20times%20an%20hour%2C%20about%20every%205%20minutes.%20These)にログファイルを公開します。Signals Explorerでシグナルを確認するには、数分待つ必要がある場合があります。
 
-1. Datadogで、**[Security > Cloud SIEM > Signals](https://app.datadoghq.com/security?query=@workflow.rule.type:(%22Log%20Detection%22%20OR%20%22Signal%20Correlation%22)&product=siem)**に移動します。
+1. Datadogで、**[Security > Cloud SIEM > Signals](https://app.datadoghq.com/security?query=@workflow.rule.type:(%22Log%20Detection%22%20OR%20%22Signal%20Correlation%22)&product=siem)** に移動します。
 
 2. Signals Explorerで、攻撃によってトリガーされたシグナルを確認します：
 
