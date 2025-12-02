@@ -163,7 +163,7 @@ Stratus Red Teamで攻撃を実行する
 
 [Stratus Red Team](https://opensource.datadoghq.com/projects/stratus-red-team/)は、一般的なクラウド攻撃手法を再現するオープンソースの攻撃エミュレーターです。Stratus Red Teamはラボ環境に既にインストールされています。
 
-1. **[lab terminal](tab-0)**で次のコマンドを実行して、Stratus Red Teamが再現できる攻撃手法のリストを表示します：
+1. **[lab terminal](tab-0)** で次のコマンドを実行して、Stratus Red Teamが再現できる攻撃手法のリストを表示します：
 
     ```run
     stratus list
