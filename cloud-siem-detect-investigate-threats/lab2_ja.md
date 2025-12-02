@@ -124,7 +124,7 @@
 
     ![Click assign](../assets/02-start-your-investigation/signals_explorer_confirm_assign.png)
 
-10. **[Signals Explorer](https://app.datadoghq.com/security)**で、両方のシグナルが`UNDER REVIEW`のステータスを持ち、Datadogトライアルアカウントユーザーに割り当てられました。
+10. **[Signals Explorer](https://app.datadoghq.com/security)** で、両方のシグナルが`UNDER REVIEW`のステータスを持ち、Datadogトライアルアカウントユーザーに割り当てられました。
 
     ![Signals with Under Review status and an assigned user](../assets/02-start-your-investigation/signals_with_status_and_assignee.png)
 
