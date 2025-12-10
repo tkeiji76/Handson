@@ -267,8 +267,8 @@ Stratus Red Teamで攻撃を実行する
     ```nocopy
     {
        "UserId": "<unique role ID>:attacker-session",
-       "Account": "[[ Instruqt-Var key="LAB_VAR_LAB_AWS_ACCOUNT_ID" hostname="lab-host" ]]",
-       "Arn": "arn:aws:sts::[[ Instruqt-Var key="LAB_VAR_LAB_AWS_ACCOUNT_ID" hostname="lab-host" ]]:assumed-role/vulnerable-role/attacker-session"
+       "Account": "[[ LabのAWSアカウントID ]]",
+       "Arn": "arn:aws:sts::[[ LabのAWSアカウントID ]]:assumed-role/vulnerable-role/attacker-session"
     }
     ```
 
