@@ -28,7 +28,7 @@
     
     これで、`attacker-session`が作成された単一のイベントを明確に確認できます。
 
-    **AWS USER ACCOUNT ID**の下で、`AssumeRole`アクションがID `[[ Instruqt-Var key="LAB_VAR_ATTACKER_ACCOUNT_ID" hostname="lab-host" ]]`を持つAWSアカウントから実行されたことがわかります。この情報は、完全なログの詳細を表示することでも確認できます。
+    **AWS USER ACCOUNT ID**の下で、`AssumeRole`アクションがID `[[ アタッカー用のAWSアカウントID ]]`を持つAWSアカウントから実行されたことがわかります。この情報は、完全なログの詳細を表示することでも確認できます。
 
 3. ログ行をクリックして、ログの詳細を開きます。
 
