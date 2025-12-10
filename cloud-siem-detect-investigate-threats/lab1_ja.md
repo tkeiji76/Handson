@@ -209,9 +209,9 @@ Stratus Red Teamで攻撃を実行する
 
 1. 現在のラボ環境の次のAWSアカウントIDに注意してください：
 
-    **lab-aws-account**: `[[ Instruqt-Var key="LAB_VAR_LAB_AWS_ACCOUNT_ID" hostname="lab-host" ]]`
+    **lab-aws-account**: `[[ LabのAWSアカウントID ]]`
 
-    **attacker-account**: `[[ Instruqt-Var key="LAB_VAR_ATTACKER_ACCOUNT_ID" hostname="lab-host" ]]`
+    **attacker-account**: `[[ アタッカー用のAWSアカウントID ]]`
 
 2. 次のコマンドを実行して、`attacker`として動作していることを確認し、ロールの**Arn**に注意してください。
 
@@ -226,9 +226,9 @@ Stratus Red Teamで攻撃を実行する
 
     ```nocopy
     {
-    "UserId": "[[ Instruqt-Var key="LAB_VAR_ATTACK_USER_ID" hostname="lab-host" ]]",
-    "Account": "[[ Instruqt-Var key="LAB_VAR_ATTACKER_ACCOUNT_ID" hostname="lab-host" ]]",
-    "Arn": "arn:aws:iam::[[ Instruqt-Var key="LAB_VAR_ATTACKER_ACCOUNT_ID" hostname="lab-host" ]]:user/attacker"
+    "UserId": "[[ LabのUserID ]]",
+    "Account": "[[ アタッカー用のAWSアカウントID ]]",
+    "Arn": "arn:aws:iam::[[ アタッカー用のAWSアカウントID ]]:user/attacker"
     }
     ```
 
