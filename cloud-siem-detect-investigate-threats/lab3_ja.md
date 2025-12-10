@@ -53,9 +53,9 @@
 
     ![Investigate the suspicious account ID](../assets/03-find-the-access-point/investigate_account_id.png)
 
-8. Cloud SIEM Investigatorが、`[[ Instruqt-Var key="LAB_VAR_ATTACKER_ACCOUNT_ID" hostname="lab-host" ]]`アカウントに焦点を当てた調査を準備して開きます。
+8. Cloud SIEM Investigatorが、`[[ アタッカー用のAWSアカウントID ]]`アカウントに焦点を当てた調査を準備して開きます。
 
-9. Cloud SIEM Investigatorで、`[[ Instruqt-Var key="LAB_VAR_ATTACKER_ACCOUNT_ID" hostname="lab-host" ]]` AWSアカウントIDのノードにカーソルを合わせます。
+9. Cloud SIEM Investigatorで、`[[ アタッカー用のAWSアカウントID ]]` AWSアカウントIDのノードにカーソルを合わせます。
 
     ![Hover over the suspicious account ID on Investigator graph](../assets/03-find-the-access-point/cloud_siem_full_graph.png)
 
