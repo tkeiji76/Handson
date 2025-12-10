@@ -40,9 +40,6 @@
 
     ![Account ID in log attributes](../assets/03-find-the-access-point/account_id_in_log_attributes.png)
 
-    > [!NOTE]
-    > ラボでは、アカウントIDは`[[ Instruqt-Var key="LAB_VAR_ATTACKER_ACCOUNT_ID" hostname="lab-host" ]]`になります。
-
 5. `esc`キーまたはXアイコンを使用して、ログとシグナルを閉じます。
 
 6. Cloud SIEM investigatorで、**In**フィールドを**AWS Account**に変更します。
