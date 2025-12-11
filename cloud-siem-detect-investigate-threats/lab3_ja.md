@@ -1,6 +1,6 @@
 攻撃者のアクセスポイントを調査する
 === 
-このアクティビティでは、**[Cloud SIEM Investigator](https://app.datadoghq.com/security/investigator/aws?id=vulnerable-role&name=vulnerable-role&type=role)**を使用して、これらの`vulnerable-role`アクションを取り巻く状況についてより詳しい情報を見つけることができるか確認します。
+このアクティビティでは、**[Cloud SIEM Investigator](https://app.datadoghq.com/security/investigator/aws?id=vulnerable-role&name=vulnerable-role&type=role)** を使用して、これらの`vulnerable-role`アクションを取り巻く状況についてより詳しい情報を見つけることができるか確認します。
 
 > [!NOTE]
 > データが表示されない場合は、時間が**Past 4 Hours**に設定されていることを確認してください。
