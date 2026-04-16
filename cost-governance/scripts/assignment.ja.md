@@ -24,7 +24,7 @@ Plan & Usage と Usage Attribution — 最初に見る場所
 =========================================================
 
 
-利用状況を確認する最初の場所は UI 内です。**Plan & Usage** ページは、[アカウント名 >（組織設定）Plan & Usage](https://app.datadoghq.com/billing/usage) から開けます。
+利用状況を確認する最初の場所は UI 内です。**Plan & Usage** ページは、[あなたのアカウント名 > (Organization Settings) Plan & Usage](https://app.datadoghq.com/billing/usage) から開けます。
 
 ![plan_usage_menu](../assets/plan_usage_menu.png)
 
