@@ -11,7 +11,7 @@ Datadog プラットフォームへのログイン
     creds
     ```
 
-2. 新しいブラウザウィンドウまたはタブで、その認証情報を使って [Datadog アカウント／組織](https://app.datadoghq.com/account/login) にログインします。
+2. 新しいブラウザウィンドウまたはタブで、その認証情報を使って [あなたのアカウントネーム > (Organization Settings) Plan & Usage](https://app.datadoghq.com/account/login) にログインします。
 
     _ヒント:_ ユーザー名とパスワードをダブルクリックするとクリップボードにコピーされます。
 
