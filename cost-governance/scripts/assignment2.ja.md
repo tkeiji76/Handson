@@ -37,7 +37,7 @@ Logs Settings メニューに移動し、[Pipelines](https://docs.datadoghq.com/
 2. 新しいインデックスを作成します
    1. 名前を `sample-generator` に設定
    2. クエリを `service:generator` に設定
-   3. **Configure Storage Tier and Retention** でストレージ階層（保持）を選択 — このラボではデフォルトで 15 日になります。
+   3. **Set Index Retention** で15日を選択します
       > [!NOTE]
       > 保持期間はコストに影響します。
    4. [daily quota](https://docs.datadoghq.com/logs/log_configuration/indexes/#set-daily-quota) を有効化
